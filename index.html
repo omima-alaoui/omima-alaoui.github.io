@@ -2,268 +2,381 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Engineering portfolio of Omayma Alaoui, Computer Science student at ENSEEIHT Toulouse.">
 <title>Omayma Alaoui | Engineering Portfolio</title>
 
 <style>
 :root {
-  --pink: #f42c85;
-  --purple: #7029b7;
-  --orange: #ff9748;
-  --dark: #25163d;
-  --light: #fff8fc;
+  --bg:#fff8f8;
+  --surface:#ffffff;
+  --text:#30233e;
+  --muted:#65596e;
+  --primary:#713b89;
+  --accent:#fa438c;
+  --accent2:#ff9b65;
+  --border:#ebdce8;
+  --hero:linear-gradient(120deg,#fff4eb,#fceef8,#f0e5ff);
+  --shadow:0 16px 45px rgba(54,25,74,.08);
 }
 
-* {
-  box-sizing: border-box;
+body.dark {
+  --bg:#141023;
+  --surface:#211a35;
+  --text:#f9f2ff;
+  --muted:#d0c3da;
+  --primary:#e1b4ff;
+  --border:#403452;
+  --hero:linear-gradient(125deg,#1b1530,#30204d,#1b1530);
+  --shadow:0 16px 45px rgba(0,0,0,.2);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+* {box-sizing:border-box}
+
+html {scroll-behavior:smooth}
 
 body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: var(--light);
-  color: var(--dark);
-  line-height: 1.7;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.7;
+  transition:background .25s,color .25s;
 }
 
+a {color:var(--primary)}
+button {font:inherit;cursor:pointer}
+
 header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,.96);
-  box-shadow: 0 3px 18px rgba(0,0,0,.07);
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
 }
 
 nav {
-  max-width: 1200px;
-  margin: auto;
-  padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  max-width:1200px;
+  margin:auto;
+  padding:15px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
 }
 
 .logo {
-  font-size: 21px;
-  font-weight: 900;
-  color: var(--purple);
+  font-size:23px;
+  font-weight:900;
+  color:var(--text);
+  text-decoration:none;
+  letter-spacing:-1px;
 }
 
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+.logo span {color:var(--accent)}
+
+.nav-links {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
 }
 
-.links a {
-  color: var(--dark);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 650;
+.nav-links a {
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  color:var(--muted);
 }
 
-.links a:hover {
-  color: var(--pink);
-}
+.nav-links a:hover {color:var(--accent)}
 
-.lang-button {
-  border: none;
-  border-radius: 25px;
-  padding: 10px 16px;
-  background: var(--purple);
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
+.controls {display:flex;gap:8px}
+
+.control {
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:50px;
+  padding:8px 13px;
 }
 
 .hero {
-  min-height: 550px;
-  padding: 100px 25px;
-  text-align: center;
-  background: linear-gradient(
-    125deg,
-    #7029b7,
-    #f42c85,
-    #ff9748
-  );
-  color: white;
+  background:var(--hero);
+  padding:95px 25px;
+}
+
+.hero-inner {
+  max-width:1180px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  align-items:center;
+  gap:55px;
+}
+
+.eyebrow {
+  color:#c53378;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:800;
+  font-size:12px;
 }
 
 .hero h1 {
-  font-size: clamp(54px, 10vw, 110px);
-  line-height: 1.1;
-  letter-spacing: -3px;
-  margin: 10px 0 25px;
-  font-weight: 900;
-  text-shadow: 0 5px 20px rgba(0,0,0,.15);
+  margin:10px 0 25px;
+  font-family:Georgia,serif;
+  font-size:clamp(55px,8vw,108px);
+  line-height:.98;
+  color:var(--text);
+  letter-spacing:-3px;
+  font-weight:900;
 }
 
-.hero h2 {
-  font-size: 22px;
-  font-weight: 500;
+.hero h1 span {color:var(--primary)}
+
+.hero-lead {
+  font-size:clamp(19px,2.5vw,25px);
+  font-weight:750;
+  color:var(--text);
 }
 
-.hero p {
-  max-width: 750px;
-  margin: 25px auto;
-  font-size: 17px;
+.hero-description {
+  font-size:16px;
+  color:var(--muted);
 }
 
-.badge {
-  display: inline-block;
-  padding: 8px 20px;
-  border: 1px solid rgba(255,255,255,.6);
-  border-radius: 30px;
-  font-size: 13px;
+.about-box {
+  background:var(--surface);
+  border-left:4px solid var(--accent);
+  border-radius:0 17px 17px 0;
+  padding:18px 22px;
+  margin:28px 0;
+  box-shadow:var(--shadow);
 }
 
-.container {
-  max-width: 1120px;
-  margin: auto;
-  padding: 75px 25px;
+.about-box h3 {
+  color:var(--accent);
+  margin:0 0 8px;
+}
+
+.about-box p {
+  color:var(--text);
+  margin:0;
+}
+
+.portrait {
+  margin:0;
+  text-align:center;
+}
+
+.portrait img {
+  display:block;
+  width:100%;
+  max-width:365px;
+  height:440px;
+  margin:auto;
+  object-fit:cover;
+  object-position:center 20%;
+  border:5px solid #f3d9b6;
+  border-radius:190px 190px 28px 28px;
+  box-shadow:0 20px 45px rgba(54,25,74,.18);
+}
+
+.portrait figcaption {
+  color:var(--muted);
+  font-size:13px;
+  margin-top:15px;
+}
+
+.btn {
+  display:inline-block;
+  background:linear-gradient(120deg,#fa438c,#ff9b65);
+  color:#21152b!important;
+  font-weight:800;
+  text-decoration:none;
+  border-radius:40px;
+  padding:12px 22px;
+  margin:6px 8px 6px 0;
+  box-shadow:0 9px 25px rgba(250,67,140,.2);
+}
+
+.btn.secondary {
+  background:var(--surface);
+  color:var(--text)!important;
+  border:2px solid var(--accent);
+  box-shadow:none;
+}
+
+.btn:hover {transform:translateY(-2px)}
+
+section.content {
+  padding:85px 25px;
+  scroll-margin-top:80px;
+}
+
+section.alt {background:var(--surface)}
+
+.wrap {max-width:1150px;margin:auto}
+
+.section-label {
+  color:var(--accent);
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
 }
 
 .section-title {
-  font-size: clamp(30px, 5vw, 43px);
-  margin: 0 0 15px;
-  color: var(--purple);
+  color:var(--text);
+  font-family:Georgia,serif;
+  font-size:clamp(32px,5vw,48px);
+  line-height:1.2;
+  margin:12px 0;
 }
 
-.subtitle {
-  color: #746b7c;
-  margin-bottom: 30px;
+.section-intro {
+  max-width:760px;
+  color:var(--muted);
+  margin-bottom:35px;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap: 22px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+
+.grid.two {
+  grid-template-columns:repeat(2,minmax(0,1fr));
 }
 
 .card {
-  background: white;
-  padding: 27px;
-  border-radius: 23px;
-  box-shadow: 0 10px 35px rgba(80,30,110,.08);
-  border: 1px solid #f4e5f4;
+  padding:28px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow);
 }
+
+.alt .card {background:var(--bg)}
 
 .card h3 {
-  color: var(--purple);
-  margin-top: 0;
+  margin:0 0 10px;
+  font-size:21px;
+  color:var(--primary);
 }
 
-.tag {
-  display: inline-block;
-  padding: 6px 12px;
-  margin: 4px;
-  background: #f4eaff;
-  border-radius: 20px;
-  font-size: 12px;
-}
+.card p {color:var(--muted)}
 
-.accent {
-  color: var(--pink);
-  font-weight: bold;
-}
+.card strong {color:var(--text)}
 
-.band {
-  background: linear-gradient(135deg,#fff0f8,#f1eaff);
+.pill {
+  display:inline-block;
+  background:rgba(250,67,140,.1);
+  color:var(--accent);
+  border-radius:20px;
+  padding:5px 12px;
+  margin:4px 4px 4px 0;
+  font-size:12px;
+  font-weight:800;
 }
 
 .timeline {
-  border-left: 4px solid var(--pink);
-  padding-left: 25px;
+  border-left:3px solid var(--accent);
+  padding-left:25px;
+  margin-bottom:35px;
 }
 
 .timeline-item {
-  margin-bottom: 30px;
+  position:relative;
+  margin-bottom:28px;
 }
 
-.timeline-item h3 {
-  margin-bottom: 5px;
+.timeline-item:before {
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  left:-32px;
+  top:8px;
+  background:var(--accent);
+  border-radius:50%;
 }
 
-.project-image {
-  max-width: 520px;
-  width: 100%;
-  height: 230px;
-  display: block;
-  margin: 25px auto;
-  border-radius: 20px;
-  object-fit: cover;
+.timeline-item h3 {margin:0;color:var(--primary)}
+.timeline-item p {margin:5px 0;color:var(--muted)}
+
+.network {
+  display:block;
+  width:100%;
+  max-width:600px;
+  height:auto;
+  margin:25px auto;
+  border-radius:20px;
 }
 
 .destination {
-  overflow: hidden;
-  padding: 0;
+  overflow:hidden;
+  padding:0;
 }
 
-.destination img {
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  display: block;
+.destination .flag {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:110px;
+  font-size:50px;
+  background:linear-gradient(125deg,#f8dce9,#e9d8fa);
 }
 
-.destination-content {
-  padding: 25px;
+.destination .inner {padding:25px}
+
+.profile-card {
+  position:relative;
+  border-top:4px solid var(--accent);
 }
 
-.button {
-  display: inline-block;
-  background: linear-gradient(
-    120deg,
-    var(--pink),
-    var(--purple)
-  );
-  color: white;
-  padding: 13px 22px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 7px;
-  transition: transform .2s;
+.profile-card a {
+  display:inline-block;
+  margin-top:10px;
+  font-weight:800;
 }
 
-.button:hover {
-  transform: translateY(-3px);
+.note {
+  background:rgba(250,67,140,.08);
+  border-left:4px solid var(--accent);
+  padding:18px;
+  border-radius:8px;
+  margin-top:25px;
+  color:var(--text);
 }
 
 footer {
-  background: var(--dark);
-  color: white;
-  text-align: center;
-  padding: 35px 20px;
+  padding:40px 20px;
+  background:#21172e;
+  color:#fff;
+  text-align:center;
 }
 
-footer a {
-  color: #ffc1e1;
+footer p {color:#e6d8ed}
+footer a {color:#ffc1dc}
+
+@media(max-width:900px) {
+  .hero-inner {grid-template-columns:1fr}
+  .grid,.grid.two {grid-template-columns:1fr 1fr}
+  .portrait {grid-row:1}
+  .portrait img {height:340px;max-width:300px}
+  nav {flex-wrap:wrap}
 }
 
-@media(max-width:700px) {
-  .hero {
-    padding: 75px 20px;
-  }
-
-  .container {
-    padding: 55px 18px;
-  }
-
-  nav {
-    justify-content: center;
-  }
-
-  .links {
-    justify-content: center;
-  }
+@media(max-width:600px) {
+  .grid,.grid.two {grid-template-columns:1fr}
+  .hero {padding:55px 18px}
+  .hero h1 {font-size:56px}
+  .nav-links {gap:10px}
+  .nav-links a {font-size:11px}
+  section.content {padding:60px 18px}
 }
 </style>
 </head>
@@ -272,104 +385,128 @@ footer a {
 
 <header>
 <nav>
+  <a class="logo" href="#welcome">OMAYMA<span>.</span></a>
 
-  <div class="logo">OMAYMA ✦</div>
-
-  <div class="links">
+  <div class="nav-links">
     <a href="#welcome"
        data-en="Welcome"
        data-fr="Accueil">Welcome</a>
 
     <a href="#engineering"
-       data-en="Engineering"
-       data-fr="Ingénierie">Engineering</a>
+       data-en="Engineering Course"
+       data-fr="Formation">Engineering Course</a>
 
     <a href="#mobility"
-       data-en="Mobility"
-       data-fr="Mobilité">Mobility</a>
+       data-en="International Mobility"
+       data-fr="Mobilité">International Mobility</a>
 
-    <a href="#sustainability"
-       data-en="Engagement"
-       data-fr="Engagement">Engagement</a>
+    <a href="#engagement"
+       data-en="Civic Engagement"
+       data-fr="Engagement">Civic Engagement</a>
 
     <a href="#activities"
-       data-en="Activities"
-       data-fr="Activités">Activities</a>
+       data-en="Sport & Activities"
+       data-fr="Sport & loisirs">Sport & Activities</a>
 
     <a href="#career"
-       data-en="Career"
-       data-fr="Carrière">Career</a>
+       data-en="Career Development"
+       data-fr="Carrière">Career Development</a>
   </div>
 
-  <button class="lang-button"
-          onclick="switchLanguage()">
-    FR / EN
-  </button>
+  <div class="controls">
+    <button class="control"
+            onclick="toggleLanguage()"
+            id="languageButton"
+            aria-label="Change language">FR</button>
 
+    <button class="control"
+            onclick="toggleTheme()"
+            id="themeButton"
+            aria-label="Change theme">☾</button>
+  </div>
 </nav>
 </header>
 
 
-<!-- 1. WELCOME -->
+<!-- WELCOME -->
 
-<section id="welcome" class="hero">
+<section class="hero" id="welcome">
+<div class="hero-inner">
 
-  <span class="badge">
-    ENSEEIHT · Toulouse · France
-  </span>
+  <div>
+    <div class="eyebrow">
+      ENSEEIHT · TOULOUSE · ENGINEERING
+    </div>
 
-  <h1>OMAYMA<br>ALAOUI</h1>
+    <h1>OMAYMA<br><span>ALAOUI.</span></h1>
 
-  <h2
-    data-en="Engineering Student · Computer Science"
-    data-fr="Élève-ingénieure · Sciences du numérique">
-    Engineering Student · Computer Science
-  </h2>
+    <p class="hero-lead"
+       data-en="Beyond Engineering — curiosity, rigorous thinking and a desire to turn ideas into meaningful impact."
+       data-fr="Au-delà de l'ingénierie : la curiosité, la rigueur et l'envie de transformer les idées en projets utiles.">
+      Beyond Engineering — curiosity, rigorous thinking
+      and a desire to turn ideas into meaningful impact.
+    </p>
 
-  <p
-    data-en="Curiosity has always been my greatest motivation. I chose engineering because I believe that understanding the world is the first step toward making a difference."
-    data-fr="La curiosité a toujours été ma plus grande motivation. J'ai choisi l'ingénierie parce que je crois que comprendre le monde est la première étape pour contribuer à le transformer.">
-    Curiosity has always been my greatest motivation.
-    I chose engineering because I believe that understanding
-    the world is the first step toward making a difference.
-  </p>
+    <p class="hero-description"
+       data-en="Curiosity has always been one of my greatest motivations. Engineering allows me to explore new fields, keep learning and look for ways to make a positive difference."
+       data-fr="La curiosité a toujours été l'une de mes principales motivations. Les études d'ingénieur me permettent d'explorer de nouveaux domaines, d'apprendre sans cesse et de chercher comment avoir un impact positif.">
+      Curiosity has always been one of my greatest motivations.
+      Engineering allows me to explore new fields,
+      keep learning and look for ways to make a positive difference.
+    </p>
 
-  <a class="button"
-     href="#engineering"
-     data-en="Discover my journey ↓"
-     data-fr="Découvrir mon parcours ↓">
-    Discover my journey ↓
-  </a>
+    <div class="about-box">
+      <h3
+        data-en="A little about me"
+        data-fr="Quelques mots sur moi">
+        A little about me
+      </h3>
 
+      <p
+        data-en="I'm Omayma Alaoui, a first-year engineering student in Computer Science at ENSEEIHT in Toulouse. After studying Mathematics and Physics in preparatory classes at LYMED in Morocco, I am now discovering the possibilities of digital sciences. I enjoy learning, taking on challenges and developing meaningful projects."
+        data-fr="Je suis Omayma Alaoui, élève-ingénieure en première année en Sciences du numérique à l'ENSEEIHT de Toulouse. Après des classes préparatoires en mathématiques et physique au LYMED, au Maroc, je découvre les nombreuses possibilités du numérique. J'aime apprendre, relever des défis et développer des projets qui ont du sens.">
+        I'm Omayma Alaoui, a first-year engineering student
+        in Computer Science at ENSEEIHT in Toulouse.
+        After studying Mathematics and Physics in preparatory
+        classes at LYMED in Morocco, I am now discovering
+        the possibilities of digital sciences.
+      </p>
+    </div>
+
+    <a class="btn" href="#engineering"
+       data-en="Explore my journey ↗"
+       data-fr="Découvrir mon parcours ↗">
+      Explore my journey ↗
+    </a>
+
+    <a class="btn secondary" href="#career"
+       data-en="Career development ↓"
+       data-fr="Parcours professionnel ↓">
+      Career development ↓
+    </a>
+  </div>
+
+  <figure class="portrait">
+    <img src="portrait-omayma.webp"
+         alt="Professional portrait of Omayma Alaoui">
+
+    <figcaption
+      data-en="Omayma Alaoui · Engineering student"
+      data-fr="Omayma Alaoui · Élève-ingénieure">
+      Omayma Alaoui · Engineering student
+    </figcaption>
+  </figure>
+
+</div>
 </section>
 
 
-<div class="container">
+<!-- ENGINEERING COURSE -->
 
-  <h2 class="section-title"
-      data-en="A little about me"
-      data-fr="Quelques mots sur moi">
-    A little about me
-  </h2>
+<section class="content" id="engineering">
+<div class="wrap">
 
-  <p
-    data-en="I am a first-year engineering student at ENSEEIHT in Toulouse, studying Computer Science. Originally educated in Morocco, I completed intensive Mathematics and Physics preparatory classes at LYMED before continuing my engineering journey in France. I enjoy learning, exploring new fields and challenging myself."
-    data-fr="Je suis élève-ingénieure en première année à l'ENSEEIHT de Toulouse, en Sciences du numérique. Après un parcours scolaire au Maroc et des classes préparatoires MP au LYMED, je poursuis mes études d'ingénierie en France. J'aime apprendre, explorer de nouveaux domaines et relever des défis.">
-    I am a first-year engineering student at ENSEEIHT
-    in Toulouse, studying Computer Science.
-
-    Originally educated in Morocco, I completed intensive
-    Mathematics and Physics preparatory classes at LYMED
-    before continuing my engineering journey in France.
-  </p>
-
-</div>
-
-
-<!-- 2. ENGINEERING COURSE -->
-
-<section id="engineering" class="band">
-<div class="container">
+  <div class="section-label">01 · EDUCATION</div>
 
   <h2 class="section-title"
       data-en="Engineering Course"
@@ -377,136 +514,107 @@ footer a {
     Engineering Course
   </h2>
 
-  <p class="subtitle"
-     data-en="My academic journey and engineering projects"
-     data-fr="Mon parcours académique et mes projets d'ingénierie">
-    My academic journey and engineering projects
+  <p class="section-intro"
+     data-en="My academic journey combines mathematical foundations, scientific rigor and a growing interest in computer science."
+     data-fr="Mon parcours associe de solides bases mathématiques, une formation scientifique rigoureuse et un intérêt croissant pour les sciences du numérique.">
+    My academic journey combines mathematical foundations,
+    scientific rigor and a growing interest in computer science.
   </p>
 
   <div class="timeline">
 
     <div class="timeline-item">
-
       <h3>2026 — Present · ENSEEIHT</h3>
-
       <p
-        data-en="First-year engineering student in Computer Science, Toulouse, France."
-        data-fr="Élève-ingénieure en première année, filière Sciences du numérique, Toulouse.">
-        First-year engineering student in Computer Science,
-        Toulouse, France.
+        data-en="First-year engineering student, Computer Science, Toulouse."
+        data-fr="Élève-ingénieure en première année, Sciences du numérique, Toulouse.">
+        First-year engineering student, Computer Science, Toulouse.
       </p>
-
     </div>
 
     <div class="timeline-item">
-
       <h3>LYMED · Morocco</h3>
-
       <p
         data-en="Intensive preparatory classes in Mathematics and Physics (MP)."
         data-fr="Classes préparatoires scientifiques en Mathématiques et Physique (MP).">
-        Intensive preparatory classes in Mathematics
-        and Physics (MP).
+        Intensive preparatory classes in Mathematics and Physics (MP).
       </p>
-
     </div>
 
     <div class="timeline-item">
-
       <h3
         data-en="High School Diploma"
         data-fr="Baccalauréat">
         High School Diploma
       </h3>
-
       <p
-        data-en="Mathematical Sciences A, Morocco."
-        data-fr="Sciences Mathématiques A, Maroc.">
-        Mathematical Sciences A, Morocco.
+        data-en="Mathematical Sciences A."
+        data-fr="Sciences Mathématiques A.">
+        Mathematical Sciences A.
       </p>
-
     </div>
 
   </div>
 
-
   <div class="card">
 
+    <div class="section-label">ACADEMIC PROJECT</div>
+
     <h3
-      data-en="Academic Project · Traffic Flow Regulation"
-      data-fr="Projet académique · Régulation du trafic">
-      Academic Project · Traffic Flow Regulation
+      data-en="Traffic Regulation: From Local Optimization to Network-Level Analysis"
+      data-fr="Régulation du trafic : de l'optimisation locale au réseau grâce à la théorie des graphes">
+      Traffic Regulation: From Local Optimization
+      to Network-Level Analysis
     </h3>
 
     <p
-      data-en="My TIPE explored how mathematical models can help regulate traffic, from optimizing a single intersection to studying an entire road network."
-      data-fr="Mon TIPE étudiait comment les modèles mathématiques peuvent contribuer à réguler le trafic, depuis l'optimisation d'un carrefour jusqu'à l'étude d'un réseau routier complet.">
-      My TIPE explored how mathematical models can help
-      regulate traffic, from optimizing a single intersection
-      to studying an entire road network.
+      data-en="My TIPE investigated traffic regulation through mathematical modeling. The first part focused on queues and waiting times at intersections. The second part examined road networks using graph theory, including Braess's paradox."
+      data-fr="Mon TIPE portait sur la régulation du trafic par la modélisation mathématique. La première partie étudiait les files d'attente et les temps de séjour aux carrefours. La seconde analysait les réseaux routiers grâce à la théorie des graphes, notamment le paradoxe de Braess.">
+      My TIPE investigated traffic regulation through
+      mathematical modeling. The first part focused on queues
+      and waiting times at intersections. The second part
+      examined road networks using graph theory,
+      including Braess's paradox.
     </p>
 
-
-    <svg class="project-image"
-         viewBox="0 0 520 230"
+    <svg class="network"
+         viewBox="0 0 600 230"
          xmlns="http://www.w3.org/2000/svg"
          role="img"
-         aria-label="Illustration of a traffic network">
+         aria-label="Road network graph">
 
-      <defs>
-        <linearGradient id="roadBg"
-                        x1="0" y1="0"
-                        x2="1" y2="1">
-          <stop stop-color="#21163f"/>
-          <stop offset="1" stop-color="#7029b7"/>
-        </linearGradient>
-      </defs>
+      <rect width="600" height="230"
+            rx="18" fill="#211831"/>
 
-      <rect width="520"
-            height="230"
-            fill="url(#roadBg)"/>
-
-      <g stroke="#9c7be4"
-         stroke-width="16"
-         opacity=".5">
-        <path d="M0 65 H520"/>
-        <path d="M0 165 H520"/>
-        <path d="M115 0 V230"/>
-        <path d="M285 0 V230"/>
-        <path d="M435 0 V230"/>
+      <g stroke="#7454a5"
+         stroke-width="12" opacity=".5">
+        <path d="M0 65H600"/>
+        <path d="M0 165H600"/>
+        <path d="M120 0V230"/>
+        <path d="M300 0V230"/>
+        <path d="M475 0V230"/>
       </g>
 
-      <g stroke="#ff80b7"
-         stroke-width="4"
-         fill="none">
-        <path d="M115 65 L285 65 L435 165"/>
-        <path d="M115 165 L285 165 L435 65"/>
+      <g stroke="#ff77a9"
+         stroke-width="4" fill="none">
+        <path d="M120 65L300 65L475 165"/>
+        <path d="M120 165L300 165L475 65"/>
       </g>
 
-      <g fill="#ffcf70"
-         stroke="white"
-         stroke-width="3">
-        <circle cx="115" cy="65" r="9"/>
-        <circle cx="285" cy="65" r="9"/>
-        <circle cx="435" cy="65" r="9"/>
-        <circle cx="115" cy="165" r="9"/>
-        <circle cx="285" cy="165" r="9"/>
-        <circle cx="435" cy="165" r="9"/>
+      <g fill="#ffc776" stroke="#fff" stroke-width="3">
+        <circle cx="120" cy="65" r="9"/>
+        <circle cx="300" cy="65" r="9"/>
+        <circle cx="475" cy="65" r="9"/>
+        <circle cx="120" cy="165" r="9"/>
+        <circle cx="300" cy="165" r="9"/>
+        <circle cx="475" cy="165" r="9"/>
       </g>
-
     </svg>
 
-
-    <p
-      data-en="Methods: queueing theory, waiting-time analysis, graph theory and Braess's paradox."
-      data-fr="Méthodes : théorie des files d'attente, analyse des temps d'attente, théorie des graphes et paradoxe de Braess.">
-      Methods: queueing theory, waiting-time analysis,
-      graph theory and Braess's paradox.
-    </p>
-
-    <span class="tag">Mathematics</span>
-    <span class="tag">Graph Theory</span>
-    <span class="tag">Optimization</span>
+    <span class="pill">Mathematics</span>
+    <span class="pill">Queueing Theory</span>
+    <span class="pill">Graph Theory</span>
+    <span class="pill">Optimization</span>
 
   </div>
 
@@ -514,10 +622,12 @@ footer a {
 </section>
 
 
-<!-- 3. INTERNATIONAL MOBILITY -->
+<!-- INTERNATIONAL MOBILITY -->
 
-<section id="mobility">
-<div class="container">
+<section class="content alt" id="mobility">
+<div class="wrap">
+
+  <div class="section-label">02 · INTERNATIONAL OUTLOOK</div>
 
   <h2 class="section-title"
       data-en="International Mobility"
@@ -525,152 +635,98 @@ footer a {
     International Mobility
   </h2>
 
-  <p class="subtitle"
-     data-en="Three possible international experiences that could shape my future."
-     data-fr="Trois expériences internationales possibles pour construire mon avenir.">
-    Three possible international experiences that could
-    shape my future.
+  <p class="section-intro"
+     data-en="International experiences are an opportunity to develop technical, linguistic and intercultural skills. These are three possible directions I would like to explore."
+     data-fr="Les expériences internationales permettent de développer des compétences techniques, linguistiques et interculturelles. Voici trois pistes que j'aimerais explorer.">
+    International experiences are an opportunity
+    to develop technical, linguistic and intercultural skills.
   </p>
 
   <div class="grid">
 
-
-    <!-- CANADA -->
-
     <article class="card destination">
-
-      <img
-        src="https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800"
-        alt="Toronto, Canada"
-        loading="lazy">
-
-      <div class="destination-content">
-
-        <h3>🇨🇦 Canada</h3>
-
-        <p class="accent"
-           data-en="Academic Exchange"
-           data-fr="Échange académique">
-          Academic Exchange
-        </p>
-
+      <div class="flag">🇨🇦</div>
+      <div class="inner">
+        <h3>Canada</h3>
+        <span class="pill"
+              data-en="Academic exchange"
+              data-fr="Échange académique">
+          Academic exchange
+        </span>
         <p
-          data-en="I would like to study in Canada to experience a different academic environment, improve my English and develop independence and intercultural skills."
-          data-fr="J'aimerais étudier au Canada pour découvrir un nouvel environnement universitaire, améliorer mon anglais et développer mon autonomie ainsi que mes compétences interculturelles.">
-          I would like to study in Canada to experience
-          a different academic environment, improve my English
-          and develop independence and intercultural skills.
+          data-en="An academic exchange in Canada would allow me to experience a new educational environment, improve my English and discover different approaches to computer science."
+          data-fr="Un échange universitaire au Canada me permettrait de découvrir un autre environnement académique, d'améliorer mon anglais et d'explorer différentes approches de l'informatique.">
+          An academic exchange in Canada would allow me
+          to experience a new educational environment,
+          improve my English and discover different
+          approaches to computer science.
         </p>
-
-        <p
-          data-en="Career connection: discovering innovative approaches to computer science and research."
-          data-fr="Lien avec mon projet professionnel : découvrir des approches innovantes en informatique et en recherche.">
-          Career connection: discovering innovative approaches
-          to computer science and research.
-        </p>
-
-        <p>
-          <strong>Role model:</strong> Yoshua Bengio
-        </p>
-
       </div>
     </article>
 
-
-    <!-- SWITZERLAND -->
-
     <article class="card destination">
-
-      <img
-        src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800"
-        alt="Switzerland"
-        loading="lazy">
-
-      <div class="destination-content">
-
-        <h3>🇨🇭 Switzerland</h3>
-
-        <p class="accent"
-           data-en="Research Experience"
-           data-fr="Expérience de recherche">
-          Research Experience
-        </p>
-
+      <div class="flag">🇨🇭</div>
+      <div class="inner">
+        <h3
+          data-en="Switzerland"
+          data-fr="Suisse">
+          Switzerland
+        </h3>
+        <span class="pill"
+              data-en="Research experience"
+              data-fr="Expérience de recherche">
+          Research experience
+        </span>
         <p
-          data-en="Switzerland interests me because of its scientific research environment. I would like to connect my mathematical background with new computer science challenges."
-          data-fr="La Suisse m'intéresse pour son environnement de recherche scientifique. J'aimerais relier mes bases mathématiques à de nouveaux défis en informatique.">
-          Switzerland interests me because of its scientific
-          research environment. I would like to connect
-          my mathematical background with new computer
-          science challenges.
+          data-en="A research experience in Switzerland would help me strengthen my scientific methods and connect mathematical reasoning with new technological challenges."
+          data-fr="Une expérience de recherche en Suisse me permettrait de renforcer mes méthodes scientifiques et de relier le raisonnement mathématique à de nouveaux défis technologiques.">
+          A research experience in Switzerland would
+          help me strengthen my scientific methods.
         </p>
-
-        <p
-          data-en="Career connection: developing scientific rigor and research methods."
-          data-fr="Lien avec mon projet professionnel : développer ma rigueur scientifique et mes méthodes de recherche.">
-          Career connection: developing scientific rigor
-          and research methods.
-        </p>
-
-        <p>
-          <strong>Role model:</strong> Martin Vetterli
-        </p>
-
       </div>
     </article>
 
-
-    <!-- GERMANY -->
-
     <article class="card destination">
-
-      <img
-        src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800"
-        alt="Germany"
-        loading="lazy">
-
-      <div class="destination-content">
-
-        <h3>🇩🇪 Germany</h3>
-
-        <p class="accent"
-           data-en="Industry Internship"
-           data-fr="Stage en entreprise">
-          Industry Internship
-        </p>
-
+      <div class="flag">🇩🇪</div>
+      <div class="inner">
+        <h3
+          data-en="Germany"
+          data-fr="Allemagne">
+          Germany
+        </h3>
+        <span class="pill"
+              data-en="Industry internship"
+              data-fr="Stage en entreprise">
+          Industry internship
+        </span>
         <p
-          data-en="I would like to complete an internship in Germany to discover applied engineering, gain practical experience and collaborate with international teams."
-          data-fr="J'aimerais effectuer un stage en Allemagne pour découvrir l'ingénierie appliquée, acquérir une expérience pratique et collaborer avec des équipes internationales.">
-          I would like to complete an internship in Germany
-          to discover applied engineering, gain practical
-          experience and collaborate with international teams.
+          data-en="An internship in Germany would allow me to discover industrial engineering practices, work with international teams and apply my technical skills."
+          data-fr="Un stage en Allemagne me permettrait de découvrir les pratiques de l'ingénierie en entreprise, de travailler dans une équipe internationale et d'appliquer mes compétences techniques.">
+          An internship in Germany would allow me
+          to discover industrial engineering practices
+          and work with international teams.
         </p>
-
-        <p
-          data-en="Career connection: understanding how engineering solutions are developed in industry."
-          data-fr="Lien avec mon projet professionnel : comprendre comment les solutions d'ingénierie sont développées en entreprise.">
-          Career connection: understanding how engineering
-          solutions are developed in industry.
-        </p>
-
-        <p>
-          <strong>Role model:</strong> Hasso Plattner
-        </p>
-
       </div>
     </article>
 
+  </div>
+
+  <div class="note"
+       data-en="These are exploratory mobility projects, not confirmed placements. Their feasibility will depend on available programs, partnerships and admission requirements."
+       data-fr="Il s'agit de projets de mobilité envisagés, et non de séjours confirmés. Leur réalisation dépendra des programmes, des partenariats et des conditions d'admission.">
+    These are exploratory mobility projects, not confirmed placements.
   </div>
 
 </div>
 </section>
 
 
-<!-- 4. SUSTAINABILITY & CIVIC ENGAGEMENT -->
+<!-- SUSTAINABILITY AND CIVIC ENGAGEMENT -->
 
-<section id="sustainability" class="band">
-<div class="container">
+<section class="content" id="engagement">
+<div class="wrap">
+
+  <div class="section-label">03 · RESPONSIBILITY</div>
 
   <h2 class="section-title"
       data-en="Sustainability & Civic Engagement"
@@ -678,33 +734,35 @@ footer a {
     Sustainability & Civic Engagement
   </h2>
 
-  <div class="grid">
+  <div class="grid two">
 
     <div class="card">
-
-      <h3>🌱 Sustainability</h3>
-
+      <h3
+        data-en="🌱 Responsible Engineering"
+        data-fr="🌱 Ingénierie responsable">
+        🌱 Responsible Engineering
+      </h3>
       <p
-        data-en="I believe engineering should consider its impact on society and the environment. I would like to learn more about responsible technology and sustainable innovation."
-        data-fr="Je pense que l'ingénierie doit tenir compte de son impact sur la société et l'environnement. Je souhaite en apprendre davantage sur les technologies responsables et l'innovation durable.">
-        I believe engineering should consider its impact
-        on society and the environment.
+        data-en="I believe engineers have a responsibility to consider the environmental and social impact of technology. I would like to explore sustainable and responsible innovation during my studies."
+        data-fr="Je pense que les ingénieurs doivent prendre en compte les conséquences environnementales et sociales des technologies. Je souhaite approfondir les questions d'innovation durable et responsable pendant mes études.">
+        I believe engineers have a responsibility to consider
+        the environmental and social impact of technology.
       </p>
-
     </div>
 
     <div class="card">
-
-      <h3>🤝 Civic Engagement</h3>
-
+      <h3
+        data-en="🤝 Community Engagement"
+        data-fr="🤝 Engagement citoyen">
+        🤝 Community Engagement
+      </h3>
       <p
-        data-en="During my engineering studies, I hope to take part in student initiatives and projects that create a positive impact."
-        data-fr="Au cours de mes études d'ingénierie, j'aimerais participer à des initiatives étudiantes et à des projets ayant un impact positif.">
-        During my engineering studies, I hope to take part
-        in student initiatives and projects that create
-        a positive impact.
+        data-en="I hope to contribute to student and community initiatives where technical knowledge, cooperation and creativity can create a positive impact."
+        data-fr="J'aimerais contribuer à des initiatives étudiantes et citoyennes dans lesquelles les connaissances techniques, la coopération et la créativité peuvent avoir un impact positif.">
+        I hope to contribute to student and community
+        initiatives where technical knowledge and cooperation
+        can create a positive impact.
       </p>
-
     </div>
 
   </div>
@@ -713,10 +771,12 @@ footer a {
 </section>
 
 
-<!-- 5. SPORT & OTHER ACTIVITIES -->
+<!-- ACTIVITIES -->
 
-<section id="activities">
-<div class="container">
+<section class="content alt" id="activities">
+<div class="wrap">
+
+  <div class="section-label">04 · PERSONAL BALANCE</div>
 
   <h2 class="section-title"
       data-en="Sport & Other Activities"
@@ -727,43 +787,44 @@ footer a {
   <div class="grid">
 
     <div class="card">
-
-      <h3>🏃 Sport</h3>
-
+      <h3
+        data-en="🏃 Sport & Well-being"
+        data-fr="🏃 Sport et bien-être">
+        🏃 Sport & Well-being
+      </h3>
       <p
-        data-en="I enjoy running, fitness, basketball, volleyball and walking. I practice these activities for pleasure, well-being and balance rather than competition."
-        data-fr="J'aime la course à pied, le fitness, le basketball, le volleyball et la marche. Je pratique ces activités pour le plaisir, le bien-être et l'équilibre, sans objectif de compétition.">
+        data-en="I enjoy running, fitness, basketball, volleyball and walking. These activities help me maintain balance and well-being."
+        data-fr="J'aime la course à pied, le fitness, le basketball, le volleyball et la marche. Ces activités m'aident à maintenir un équilibre et à prendre soin de mon bien-être.">
         I enjoy running, fitness, basketball, volleyball
         and walking.
       </p>
-
     </div>
 
     <div class="card">
-
-      <h3>📚 Reading</h3>
-
+      <h3
+        data-en="📚 Reading"
+        data-fr="📚 Lecture">
+        📚 Reading
+      </h3>
       <p
-        data-en="I am interested in novels, personal development and science. Books such as Atomic Habits, The Miracle Morning and The Compound Effect reflect topics that interest me."
-        data-fr="Je m'intéresse aux romans, au développement personnel et aux sciences. Des livres comme Atomic Habits, The Miracle Morning et The Compound Effect reflètent des thèmes qui m'intéressent.">
-        I am interested in novels, personal development
-        and science.
+        data-en="I enjoy novels and books about personal development, habits and productivity. I am interested in Atomic Habits, The Miracle Morning and The Compound Effect."
+        data-fr="J'aime les romans et les livres consacrés au développement personnel, aux habitudes et à la productivité. Je m'intéresse notamment à Atomic Habits, The Miracle Morning et The Compound Effect.">
+        I enjoy novels and books about personal development,
+        habits and productivity.
       </p>
-
     </div>
 
     <div class="card">
-
-      <h3>🌍 Cultural Curiosity</h3>
-
+      <h3
+        data-en="🌍 Languages & Culture"
+        data-fr="🌍 Langues et cultures">
+        🌍 Languages & Culture
+      </h3>
       <p
-        data-en="Living and studying in different cultural environments has encouraged me to become more adaptable, open-minded and independent."
-        data-fr="Vivre et étudier dans des environnements culturels différents m'a encouragée à développer mon autonomie, mon ouverture d'esprit et ma capacité d'adaptation.">
-        Living and studying in different cultural environments
-        has encouraged me to become more adaptable,
-        open-minded and independent.
+        data-en="I value cultural openness and language learning. I speak Arabic and French, study English and am also interested in German."
+        data-fr="J'accorde de l'importance à l'ouverture culturelle et à l'apprentissage des langues. Je parle arabe et français, j'étudie l'anglais et je m'intéresse également à l'allemand.">
+        I value cultural openness and language learning.
       </p>
-
     </div>
 
   </div>
@@ -772,10 +833,12 @@ footer a {
 </section>
 
 
-<!-- 6. CAREER DEVELOPMENT -->
+<!-- CAREER DEVELOPMENT -->
 
-<section id="career" class="band">
-<div class="container">
+<section class="content" id="career">
+<div class="wrap">
+
+  <div class="section-label">05 · PROFESSIONAL GROWTH</div>
 
   <h2 class="section-title"
       data-en="Career Development"
@@ -783,255 +846,274 @@ footer a {
     Career Development
   </h2>
 
-  <p
-    data-en="I am still exploring the many possibilities of computer science. My goal is to learn from professionals, discover different fields and gradually build a meaningful career path."
-    data-fr="J'explore encore les nombreuses possibilités des sciences du numérique. Mon objectif est d'apprendre auprès de professionnels, de découvrir différents domaines et de construire progressivement mon projet professionnel.">
-    I am still exploring the many possibilities
-    of computer science.
+  <p class="section-intro"
+     data-en="My professional path is still taking shape. I want to explore computer science, learn from experienced engineers and gradually identify the fields where I can contribute most."
+     data-fr="Mon projet professionnel se construit progressivement. Je souhaite explorer les sciences du numérique, apprendre auprès d'ingénieurs expérimentés et identifier les domaines dans lesquels je pourrai apporter ma contribution.">
+    My professional path is still taking shape.
+    I want to explore computer science and learn
+    from experienced engineers.
+  </p>
+
+  <h3
+    data-en="Three Professional Profiles That Inspire Me"
+    data-fr="Trois parcours professionnels qui m'inspirent">
+    Three Professional Profiles That Inspire Me
+  </h3>
+
+  <p class="section-intro"
+     data-en="These three ENSEEIHT alumni illustrate different paths in technology, engineering and innovation. My reflections are based on their professional profiles, not on interviews."
+     data-fr="Ces trois anciens élèves de l'ENSEEIHT illustrent différents parcours dans les technologies, l'ingénierie et l'innovation. Mes réflexions reposent sur leurs profils professionnels et non sur des entretiens.">
+    These three ENSEEIHT alumni illustrate different
+    paths in technology, engineering and innovation.
   </p>
 
   <div class="grid">
 
+    <!-- BAPTISTE ROBERT -->
 
-    <!-- CV -->
+    <article class="card profile-card">
+
+      <h3>Baptiste Robert</h3>
+
+      <span class="pill"
+            data-en="Cybersecurity · Entrepreneurship"
+            data-fr="Cybersécurité · Entrepreneuriat">
+        Cybersecurity · Entrepreneurship
+      </span>
+
+      <p
+        data-en="An ENSEEIHT alumnus, Baptiste Robert is a cybersecurity researcher and founder of Predicta Lab. His career includes Android engineering at Intel, ethical hacking and research into online privacy and security."
+        data-fr="Ancien élève de l'ENSEEIHT, Baptiste Robert est chercheur en cybersécurité et fondateur de Predicta Lab. Son parcours comprend l'ingénierie Android chez Intel, le hacking éthique et la recherche sur la sécurité et la vie privée en ligne.">
+        An ENSEEIHT alumnus, Baptiste Robert is a cybersecurity
+        researcher and founder of Predicta Lab.
+      </p>
+
+      <p>
+        <strong
+          data-en="What inspires me:"
+          data-fr="Ce qui m'inspire :">
+          What inspires me:
+        </strong>
+
+        <span
+          data-en="His technical curiosity, independent thinking and ability to turn cybersecurity expertise into an entrepreneurial project."
+          data-fr="Sa curiosité technique, son autonomie et sa capacité à transformer une expertise en cybersécurité en projet entrepreneurial.">
+          His technical curiosity, independent thinking
+          and ability to turn cybersecurity expertise
+          into an entrepreneurial project.
+        </span>
+      </p>
+
+      <a href="https://www.linkedin.com/in/baptisterobert"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-en="View LinkedIn profile ↗"
+         data-fr="Voir le profil LinkedIn ↗">
+        View LinkedIn profile ↗
+      </a>
+
+    </article>
+
+
+    <!-- BRUNO RAMAEL -->
+
+    <article class="card profile-card">
+
+      <h3>Bruno Ramael</h3>
+
+      <span class="pill"
+            data-en="Full-stack Development · AI"
+            data-fr="Développement full-stack · IA">
+        Full-stack Development · AI
+      </span>
+
+      <p
+        data-en="Bruno Ramael graduated from ENSEEIHT and has worked across engineering, research, web development and artificial intelligence. His experience includes Rolls-Royce, Ford, Capgemini and entrepreneurial projects."
+        data-fr="Bruno Ramael est diplômé de l'ENSEEIHT. Il a travaillé dans l'ingénierie, la recherche, le développement web et l'intelligence artificielle, notamment chez Rolls-Royce, Ford et Capgemini, ainsi que sur des projets entrepreneuriaux.">
+        Bruno Ramael graduated from ENSEEIHT
+        and has worked across engineering, research,
+        web development and artificial intelligence.
+      </p>
+
+      <p>
+        <strong
+          data-en="What inspires me:"
+          data-fr="Ce qui m'inspire :">
+          What inspires me:
+        </strong>
+
+        <span
+          data-en="His adaptability, continuous learning and ability to combine different engineering disciplines with software and AI."
+          data-fr="Sa capacité d'adaptation, son apprentissage continu et sa manière d'associer différentes disciplines de l'ingénierie au logiciel et à l'IA.">
+          His adaptability, continuous learning
+          and ability to combine different engineering
+          disciplines with software and AI.
+        </span>
+      </p>
+
+      <a href="https://www.linkedin.com/in/bruno-ramael-80bb79115"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-en="View LinkedIn profile ↗"
+         data-fr="Voir le profil LinkedIn ↗">
+        View LinkedIn profile ↗
+      </a>
+
+    </article>
+
+
+    <!-- ALAIN CAILLERIE -->
+
+    <article class="card profile-card">
+
+      <h3>Alain Caillerie</h3>
+
+      <span class="pill"
+            data-en="International R&D · Innovation"
+            data-fr="R&D internationale · Innovation">
+        International R&D · Innovation
+      </span>
+
+      <p
+        data-en="An ENSEEIHT electronics graduate, Alain Caillerie built a career in research and development, including 26 years at Canon. His international experience includes collaboration between France and Japan. He later founded 1ventive and reports filing more than 65 patent applications."
+        data-fr="Diplômé de l'ENSEEIHT en électronique, Alain Caillerie a construit une carrière en recherche et développement, notamment pendant 26 ans chez Canon. Son expérience internationale comprend des collaborations entre la France et le Japon. Il a ensuite fondé 1ventive et indique avoir déposé plus de 65 demandes de brevet.">
+        An ENSEEIHT electronics graduate, Alain Caillerie
+        built a career in research and development,
+        including 26 years at Canon.
+      </p>
+
+      <p>
+        <strong
+          data-en="What inspires me:"
+          data-fr="Ce qui m'inspire :">
+          What inspires me:
+        </strong>
+
+        <span
+          data-en="His international outlook, long-term commitment to innovation and ability to transform research into practical applications."
+          data-fr="Son ouverture internationale, son engagement durable dans l'innovation et sa capacité à transformer la recherche en applications concrètes.">
+          His international outlook, long-term commitment
+          to innovation and ability to transform research
+          into practical applications.
+        </span>
+      </p>
+
+      <a href="https://www.linkedin.com/in/alain-caillerie-a376249"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-en="View LinkedIn profile ↗"
+         data-fr="Voir le profil LinkedIn ↗">
+        View LinkedIn profile ↗
+      </a>
+
+    </article>
+
+  </div>
+
+
+  <!-- PROFESSIONAL RESOURCES -->
+
+  <h3 style="margin-top:55px"
+      data-en="Professional Resources"
+      data-fr="Ressources professionnelles">
+    Professional Resources
+  </h3>
+
+  <p class="section-intro"
+     data-en="My CVs, professional network and personal introduction."
+     data-fr="Mes CV, mon réseau professionnel et ma présentation personnelle.">
+    My CVs, professional network and personal introduction.
+  </p>
+
+  <div class="grid">
 
     <div class="card">
-
       <h3
-        data-en="📄 My CVs"
-        data-fr="📄 Mes CV">
-        📄 My CVs
+        data-en="📄 Curriculum Vitae"
+        data-fr="📄 Curriculum Vitae">
+        📄 Curriculum Vitae
       </h3>
 
       <p
-        data-en="Explore my academic background, skills and projects."
-        data-fr="Découvrez mon parcours académique, mes compétences et mes projets.">
-        Explore my academic background, skills and projects.
+        data-en="Explore my education, technical skills and academic projects."
+        data-fr="Découvrez ma formation, mes compétences techniques et mes projets académiques.">
+        Explore my education, technical skills
+        and academic projects.
       </p>
 
-      <a class="button"
+      <a class="btn"
          href="CV_Omayma_Alaoui_Design_2026_FR.pdf"
          target="_blank"
-         rel="noopener">
+         rel="noopener noreferrer">
         🇫🇷 CV français ↗
       </a>
 
-      <a class="button"
+      <a class="btn secondary"
          href="CV_Omayma_Alaoui_Design_2026_EN.pdf"
          target="_blank"
-         rel="noopener">
+         rel="noopener noreferrer">
         🇬🇧 English CV ↗
       </a>
-
     </div>
 
-
-    <!-- LINKEDIN -->
-
     <div class="card">
-
       <h3>💼 LinkedIn</h3>
 
       <p
-        data-en="Connect with me and follow my academic and professional journey."
-        data-fr="Retrouvez mon parcours académique et professionnel et échangeons sur LinkedIn.">
-        Connect with me and follow my academic
-        and professional journey.
+        data-en="Follow my academic and professional development and connect with me."
+        data-fr="Suivez mon parcours académique et professionnel et échangeons sur LinkedIn.">
+        Follow my academic and professional development
+        and connect with me.
       </p>
 
-      <a class="button"
+      <a class="btn"
          href="https://www.linkedin.com/in/omayma-alaoui-08678b394/"
          target="_blank"
-         rel="noopener"
-         data-en="Visit my LinkedIn ↗"
-         data-fr="Voir mon LinkedIn ↗">
-        Visit my LinkedIn ↗
+         rel="noopener noreferrer"
+         data-en="My LinkedIn ↗"
+         data-fr="Mon LinkedIn ↗">
+        My LinkedIn ↗
       </a>
-
     </div>
 
-
-    <!-- ELEVATOR PITCH -->
-
     <div class="card">
-
       <h3
-        data-en="🎬 Elevator Pitch"
-        data-fr="🎬 Présentation vidéo">
-        Elevator Pitch
+        data-en="🎬 Personal Introduction"
+        data-fr="🎬 Présentation personnelle">
+        🎬 Personal Introduction
       </h3>
 
       <p
-        data-en="My 2–3 minute professional introduction video will be added here."
-        data-fr="Ma vidéo de présentation professionnelle de 2 à 3 minutes sera ajoutée ici.">
-        My 2–3 minute professional introduction video
+        data-en="A short video introducing my background, interests and professional aspirations will be added here."
+        data-fr="Une courte vidéo présentant mon parcours, mes centres d'intérêt et mes aspirations professionnelles sera ajoutée ici.">
+        A short video introducing my background,
+        interests and professional aspirations
         will be added here.
       </p>
 
-      <span class="tag"
-            data-en="In preparation"
-            data-fr="En préparation">
-        In preparation
+      <span class="pill"
+            data-en="Coming soon"
+            data-fr="À venir">
+        Coming soon
       </span>
-
     </div>
 
   </div>
 
+  <div class="note">
+    <strong
+      data-en="Looking ahead"
+      data-fr="Pour la suite">
+      Looking ahead
+    </strong>
 
-  <!-- PROFESSIONAL ROLE MODELS -->
-
-  <h3 style="margin-top:50px"
-      data-en="Professional Role Models"
-      data-fr="Modèles professionnels">
-    Professional Role Models
-  </h3>
-
-  <p
-    data-en="These publicly documented professional profiles help me explore different career paths. They are research-based examples, not interviews I have conducted."
-    data-fr="Ces profils professionnels publics m'aident à explorer différents parcours. Il s'agit de recherches documentaires et non d'entretiens que j'aurais réalisés.">
-    These publicly documented professional profiles
-    help me explore different career paths.
-  </p>
-
-  <div class="grid">
-
-
-    <!-- ROLE MODEL 1 -->
-
-    <div class="card">
-
-      <h3>Yoshua Bengio</h3>
-
-      <p class="accent"
-         data-en="AI Research · Canada"
-         data-fr="Recherche en IA · Canada">
-        AI Research · Canada
-      </p>
-
-      <p
-        data-en="His research career illustrates how mathematical foundations can contribute to major advances in computer science. It inspires my interest in research and international academic environments."
-        data-fr="Son parcours de recherche illustre comment les fondements mathématiques peuvent contribuer à des avancées majeures en informatique. Il nourrit mon intérêt pour la recherche et les environnements universitaires internationaux.">
-        His research career illustrates how mathematical
-        foundations can contribute to major advances
-        in computer science.
-      </p>
-
-      <p>
-        <strong>🇨🇦 Canada:</strong>
-        <span
-          data-en="academic exchange and research discovery."
-          data-fr="échange académique et découverte de la recherche.">
-          academic exchange and research discovery.
-        </span>
-      </p>
-
-      <a href="https://yoshuabengio.org/"
-         target="_blank"
-         rel="noopener">
-        Professional profile ↗
-      </a>
-
-    </div>
-
-
-    <!-- ROLE MODEL 2 -->
-
-    <div class="card">
-
-      <h3>Martin Vetterli</h3>
-
-      <p class="accent"
-         data-en="Engineering Research · Switzerland"
-         data-fr="Recherche en ingénierie · Suisse">
-        Engineering Research · Switzerland
-      </p>
-
-      <p
-        data-en="His academic work at the intersection of mathematics, signal processing and engineering demonstrates the importance of scientific rigor and interdisciplinary thinking."
-        data-fr="Son travail académique à la croisée des mathématiques, du traitement du signal et de l'ingénierie montre l'importance de la rigueur scientifique et de l'interdisciplinarité.">
-        His academic work at the intersection of mathematics,
-        signal processing and engineering demonstrates
-        the importance of scientific rigor.
-      </p>
-
-      <p>
-        <strong>🇨🇭 Switzerland:</strong>
-        <span
-          data-en="research experience and scientific methods."
-          data-fr="expérience de recherche et méthodes scientifiques.">
-          research experience and scientific methods.
-        </span>
-      </p>
-
-      <a href="https://www.epfl.ch/"
-         target="_blank"
-         rel="noopener">
-        EPFL ↗
-      </a>
-
-    </div>
-
-
-    <!-- ROLE MODEL 3 -->
-
-    <div class="card">
-
-      <h3>Hasso Plattner</h3>
-
-      <p class="accent"
-         data-en="Software Industry · Germany"
-         data-fr="Industrie du logiciel · Allemagne">
-        Software Industry · Germany
-      </p>
-
-      <p
-        data-en="His career in enterprise software and technology entrepreneurship shows how engineering ideas can become practical solutions used by organizations."
-        data-fr="Son parcours dans les logiciels d'entreprise et l'entrepreneuriat technologique montre comment des idées d'ingénierie peuvent devenir des solutions concrètes utilisées par les organisations.">
-        His career in enterprise software and technology
-        entrepreneurship shows how engineering ideas
-        can become practical solutions.
-      </p>
-
-      <p>
-        <strong>🇩🇪 Germany:</strong>
-        <span
-          data-en="industry internship and applied engineering."
-          data-fr="stage en entreprise et ingénierie appliquée.">
-          industry internship and applied engineering.
-        </span>
-      </p>
-
-      <a href="https://hpi.de/"
-         target="_blank"
-         rel="noopener">
-        Hasso Plattner Institute ↗
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <!-- CONTACT -->
-
-  <div class="card" style="margin-top:30px">
-
-    <h3
-      data-en="Let's connect"
-      data-fr="Restons en contact">
-      Let's connect
-    </h3>
-
-    <p>
-      📧
-      <a href="mailto:omaymaalaoui192@gmail.com">
-        omaymaalaoui192@gmail.com
-      </a>
+    <p
+      data-en="I am at the beginning of my engineering journey. This portfolio will evolve with my projects, internships, technical skills and international experiences."
+      data-fr="Je suis au début de mon parcours d'ingénieure. Ce portfolio évoluera avec mes projets, mes stages, mes compétences techniques et mes expériences internationales.">
+      I am at the beginning of my engineering journey.
+      This portfolio will evolve with my projects,
+      internships, technical skills and international experiences.
     </p>
-
-    <p>📍 Toulouse, France</p>
-
   </div>
 
 </div>
@@ -1041,8 +1123,7 @@ footer a {
 <!-- FOOTER -->
 
 <footer>
-
-  <strong>OMAYMA ALAOUI ✦</strong>
+  <h2>OMAYMA ALAOUI<span style="color:#fa438c">.</span></h2>
 
   <p
     data-en="Learning · Exploring · Growing"
@@ -1050,36 +1131,73 @@ footer a {
     Learning · Exploring · Growing
   </p>
 
-  <p>© 2026 Omayma Alaoui</p>
+  <p>
+    <a href="mailto:omaymaalaoui192@gmail.com">
+      omaymaalaoui192@gmail.com
+    </a>
+    · Toulouse, France
+  </p>
 
+  <p>© 2026 Omayma Alaoui</p>
 </footer>
 
 
-<!-- LANGUAGE SWITCH -->
+<!-- INTERACTIONS -->
 
 <script>
-
 let currentLanguage = "en";
 
-function switchLanguage() {
+function applyLanguage(language) {
+  currentLanguage = language;
 
-  currentLanguage =
-    currentLanguage === "en" ? "fr" : "en";
-
-  document.documentElement.lang = currentLanguage;
+  document.documentElement.lang = language;
 
   document.querySelectorAll("[data-en][data-fr]")
-    .forEach(function(element) {
-
-      element.innerHTML =
-        element.getAttribute(
-          "data-" + currentLanguage
-        );
-
+    .forEach(element => {
+      element.textContent = element.getAttribute(
+        "data-" + language
+      );
     });
 
+  document.getElementById("languageButton").textContent =
+    language === "en" ? "FR" : "EN";
+
+  localStorage.setItem("omayma-language", language);
 }
 
+function toggleLanguage() {
+  applyLanguage(
+    currentLanguage === "en" ? "fr" : "en"
+  );
+}
+
+function applyTheme(theme) {
+  document.body.classList.toggle(
+    "dark",
+    theme === "dark"
+  );
+
+  document.getElementById("themeButton").textContent =
+    theme === "dark" ? "☀" : "☾";
+
+  localStorage.setItem("omayma-theme", theme);
+}
+
+function toggleTheme() {
+  applyTheme(
+    document.body.classList.contains("dark")
+      ? "light"
+      : "dark"
+  );
+}
+
+applyLanguage(
+  localStorage.getItem("omayma-language") || "en"
+);
+
+applyTheme(
+  localStorage.getItem("omayma-theme") || "light"
+);
 </script>
 
 </body>
